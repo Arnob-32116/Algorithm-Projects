@@ -35,13 +35,13 @@ void search(string word1,string s,bool ck[]){
         }
        // cout<<word2<<" "<<"TEST"<<" "<<k<<" "<<l<<el;
         if (word1==word2){
-        up = k-1;
-        low =k - word2.length();
+        up = k;
+        low =k - word2.length()-1;
         blacklist(ck,up,low,n); 
         cnt++;
         }
     }
-    if (word1!="\0" && word1.length()!=1)
+    if (word1!="\0")
     cout<<word1<<" "<<cnt<<el;
 }
 
