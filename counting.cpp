@@ -20,7 +20,7 @@ void blacklist(bool ck[], lli up, lli low,lli n){
 }
 
 
-void search(string word1,string s,bool ck[]){
+void search(string word1,string s,bool ck[],vector<pair<string,lli>> &v){
     string word2;
     lli n =s.length(),cnt=1,k=i,l=0,up,low;
     while(k<n){
@@ -41,11 +41,11 @@ void search(string word1,string s,bool ck[]){
         cnt++;
         }
     }
-    if (word1!="\0")
-    cout<<word1<<" "<<cnt<<el;
+    if (word1!="\0"){
+    v.push_back(make_pair(word1,cnt));}
 }
 
-void word(string s,lli n,bool ck[]){
+void word(string s,lli n,bool ck[],vector<pair<string,lli>> &v){
     string word1;
     //lli i,j;
     fo(i,0,n)
@@ -67,7 +67,7 @@ void word(string s,lli n,bool ck[]){
             word1+=s[j];
             ck[j]=true;}
         }
-       search(word1,s,ck);
+       search(word1,s,ck,v);
     }
 
 }
@@ -75,9 +75,13 @@ void word(string s,lli n,bool ck[]){
 
 int main (){
     string s,word1,word2;
+    vector<pair<string,lli>> v;
     getline(cin,s);
     lli n=s.length();
     bool ck[n];
-    word(s,n,ck);
+    word(s,n,ck,v);
+    sort(v.begin(),v.end());
+    for(auto p:v)
+    cout<<p.first<<" "<<p.second<<el;
     
 }
