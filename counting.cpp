@@ -12,6 +12,12 @@ bool ck=false;
 lli i,j;
 lli M = 10e9+7;
 using namespace std;
+
+//A function that surpresses / blocks a matched word from being used again.
+//Like He(1) is a boy.He(2) is a student. Here He(1) is used first and matched with He(2).
+//Later He(2) will also try to match itself with the rest of the string.
+//This function blocks that.
+
 void blacklist(bool ck[], lli up, lli low,lli n){
     lli x=0;
     for(x=low;x<=up;x++){
@@ -19,6 +25,7 @@ void blacklist(bool ck[], lli up, lli low,lli n){
     }
 }
 
+//This function Matches two words and counts the number of times it matched with another word and stores in a vector.
 
 void search(string word1,string s,bool ck[],vector<pair<string,lli>> &v){
     string word2;
@@ -33,7 +40,6 @@ void search(string word1,string s,bool ck[],vector<pair<string,lli>> &v){
             word2+=s[l];
             }
         }
-       // cout<<word2<<" "<<"TEST"<<" "<<k<<" "<<l<<el;
         if (word1==word2){
         up = k;
         low =k - word2.length()-1;
@@ -44,6 +50,8 @@ void search(string word1,string s,bool ck[],vector<pair<string,lli>> &v){
     if (word1!="\0"){
     v.push_back(make_pair(word1,cnt));}
 }
+
+//This function splits individual words from a string.
 
 void word(string s,lli n,bool ck[],vector<pair<string,lli>> &v){
     string word1;
@@ -72,7 +80,7 @@ void word(string s,lli n,bool ck[],vector<pair<string,lli>> &v){
 
 }
 
-
+//Driver Code.
 int main (){
     string s,word1,word2;
     vector<pair<string,lli>> v;
@@ -80,7 +88,8 @@ int main (){
     lli n=s.length();
     bool ck[n];
     word(s,n,ck,v);
-    sort(v.begin(),v.end());
+    sort(v.begin(),v.end());   //This sorts the words in an alphabetical worder.
+    
     for(auto p:v)
     cout<<p.first<<" "<<p.second<<el;
     
