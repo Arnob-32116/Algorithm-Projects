@@ -100,10 +100,10 @@ string romansum(int num){
 
 //Driver Code
 int main (){
+    A:
     string roman,ans;
     vector<int> rn;
     int option=0,answer,num;
-    A:
     cout<<" CHOOSE 1 TO CONVERT ROMAN NUMERICAL TO DECIMAL \n  CHOOSE 2 TO CONVERT DECIMAL TO ROMAN NUMERICAL \n  PRESS 3 TO EXIT"<<endl;
     cin>>option;
     if (option==1){
